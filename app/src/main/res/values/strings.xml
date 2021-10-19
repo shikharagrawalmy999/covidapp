@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">covidapp</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="web_client_id">170299032357-8rf2vfm8fagier5iahe9p8148nkdql98.apps.googleusercontent.com</string>
+    <string name="name">Name</string>
+    <string name="enter_name">Enter name</string>
+    <string name="gender">Gender</string>
+    <string name="enter_gender">Enter gender</string>
+    <string name="phone_number">Phone number</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="age">Age</string>
+    <string name="healthy">Healthy</string>
+    <string name="at_risk">At risk</string>
+    <string name="health_status">Health Assessment Questionnaire</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="sign_in_with_google">Sign in with google</string>
+    <string name="image">image</string>
+    <string name="log_out">Log out</string>
+    <string name="question1">Are you experiencing any of the following symptoms?</string>
+    <string name="question2">Do you have any of the following pre-existing conditions?</string>
+    <string name="question3">Have you travelled in the past 14 days to any of the states below?</string>
+    <string name="andhra_pradesh">Andhra Pradesh</string>
+    <string name="covid_updates">Nationwide COVID Updates</string>
+    <string name="htg_sensei">htg_sensei</string>
+    <string name="number_of_cases">Number of cases:</string>
+    <string name="cases_today">Cases Today:</string>
+    <string name="statewise_covid_updates">Statewise Covid Updates</string>
+</resources>
