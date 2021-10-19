@@ -37,10 +37,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
         <activity
             android:name=".MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".StateDataDisplay"
+            android:exported="false" />
+        <activity
+            android:name=".covid_states_data"
+            android:exported="false" />
+        <activity
+            android:name=".CovidUpdates"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.view.View;
+import android.widget.Button;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -20,7 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Info_dashboard extends AppCompatActivity {
-
+    private Button covid_button;
+    private Button state_covid_button;
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -31,6 +33,23 @@ public class Info_dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_dasboard);
+        covid_button = (Button) findViewById(R.id.covid_update_button);
+
+        covid_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCovidUpdate();
+            }
+        });
+
+        state_covid_button = (Button) findViewById(R.id.statewise_covid);
+
+        state_covid_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openStatewiseCovidUpdate();
+            }
+        });
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -90,4 +109,14 @@ public class Info_dashboard extends AppCompatActivity {
         });
 
     }
+    public void openCovidUpdate(){
+        Intent intent = new Intent(this, CovidUpdates.class);
+        startActivity(intent);
+    }
+
+    public void openStatewiseCovidUpdate(){
+        Intent intent = new Intent(this, covid_states_data.class);
+        startActivity(intent);
+    }
+
 }
