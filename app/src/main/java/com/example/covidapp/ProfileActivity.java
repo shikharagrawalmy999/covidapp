@@ -21,11 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity {
 
     EditText name_edit,gender_edit,phone_number_edit,age_edit;
-    RadioButton healthy,at_risk;
     TextView save;
     FirebaseAuth auth;
     FirebaseUser user;
     DatabaseReference reference;
+    TextView questionairre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +35,14 @@ public class ProfileActivity extends AppCompatActivity {
         gender_edit=findViewById(R.id.gender_edit_text);
         phone_number_edit=findViewById(R.id.phone_edit_text);
         age_edit=findViewById(R.id.age_edit_text);
-        healthy=findViewById(R.id.radioButton);
-        at_risk=findViewById(R.id.radioButton2);
+        questionairre=findViewById(R.id.questionairre);
 
         save=findViewById(R.id.save);
 
+        questionairre.setOnClickListener(v->{
+            Intent info_dashboard=new Intent(ProfileActivity.this, questionairre.class);
+            startActivity(info_dashboard);
+        });
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -53,16 +56,11 @@ public class ProfileActivity extends AppCompatActivity {
                     String gender = snapshot.child("gender").getValue(String.class);
                     String age = snapshot.child("age").getValue(String.class);
                     String phone_number = snapshot.child("phone_number").getValue(String.class);
-                    String status = snapshot.child("status").getValue(String.class);
 
                     name_edit.setText(name);
                     gender_edit.setText(gender);
                     phone_number_edit.setText(phone_number);
                     age_edit.setText(age);
-                    if (status.equals("Healthy"))
-                        healthy.setChecked(true);
-                    else
-                        at_risk.setEnabled(true);
                 }
             }
             @Override
@@ -78,23 +76,16 @@ public class ProfileActivity extends AppCompatActivity {
             if(!gender_edit.getText().toString().equals("")){
                 if(!phone_number_edit.getText().toString().equals("") && phone_number_edit.getText().toString().length()==10){
                     if(!age_edit.getText().toString().equals("")){
-                        if(healthy.isChecked() || at_risk.isChecked()){
-                            reference.child(user.getUid()).child("name").setValue(name_edit.getText().toString());
-                            reference.child(user.getUid()).child("gender").setValue(gender_edit.getText().toString());
-                            reference.child(user.getUid()).child("phone_number").setValue(phone_number_edit.getText().toString());
-                            reference.child(user.getUid()).child("age").setValue(age_edit.getText().toString());
-                            if(healthy.isChecked())
-                                reference.child(user.getUid()).child("status").setValue("Healthy");
-                            else if(at_risk.isChecked())
-                                reference.child(user.getUid()).child("status").setValue("At risk");
-                            Intent info_dashboard=new Intent(ProfileActivity.this, Info_dashboard.class);
-                            startActivity(info_dashboard);
-                            finish();
-                            Toast.makeText(ProfileActivity.this, "Changes saved successfully.", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(ProfileActivity.this, "Please set your health status", Toast.LENGTH_SHORT).show();
-                        }
+
+                        reference.child(user.getUid()).child("name").setValue(name_edit.getText().toString());
+                        reference.child(user.getUid()).child("gender").setValue(gender_edit.getText().toString());
+                        reference.child(user.getUid()).child("phone_number").setValue(phone_number_edit.getText().toString());
+                        reference.child(user.getUid()).child("age").setValue(age_edit.getText().toString());
+                        Intent info_dashboard=new Intent(ProfileActivity.this, Info_dashboard.class);
+                        startActivity(info_dashboard);
+                        finish();
+                        Toast.makeText(ProfileActivity.this, "Changes saved successfully.", Toast.LENGTH_SHORT).show();
+
                     }
                     else{
                         Toast.makeText(ProfileActivity.this, "Please enter your age", Toast.LENGTH_SHORT).show();

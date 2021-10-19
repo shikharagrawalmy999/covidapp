@@ -183,8 +183,8 @@
 
     <Button
         android:id="@+id/statewise_covid"
-        android:layout_width="213dp"
-        android:layout_height="42dp"
+        android:layout_width="211dp"
+        android:layout_height="50dp"
         android:text="@string/statewise_covid_updates"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

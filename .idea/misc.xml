@@ -7,12 +7,14 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/drawable/ic_google.xml" value="0.28177083333333336" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/drawable/profile.xml" value="0.28177083333333336" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_covid_updates_home.xml" value="0.20606884057971014" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_covid_updates_india.xml" value="0.20606884057971014" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_covid_updates_states.xml" value="0.20606884057971014" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_info_dasboard.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_covid_updates_india.xml" value="0.4" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_covid_updates_states.xml" value="0.264" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_covid_updates_states_data.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_info_dasboard.xml" value="0.4" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_maps.xml" value="0.16614583333333333" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_profile.xml" value="0.264" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_questionairre.xml" value="0.176" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/activity_questionnaire.xml" value="0.264" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/covidapp/app/src/main/res/layout/loading.xml" value="0.265625" />
       </map>
