@@ -29,6 +29,9 @@ public class Info_dashboard extends AppCompatActivity {
     TextView edit,logout;
     GoogleSignInClient mGoogleSignInClient;
     TextView name_txt,gender_text,age_text,phone_text,health_status;
+
+    Button discover;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,15 @@ public class Info_dashboard extends AppCompatActivity {
         });
 
         state_covid_button = (Button) findViewById(R.id.statewise_covid);
+
+
+        discover = findViewById(R.id.bluetoothDiscButton);
+        discover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Info_dashboard.this, bluetoothDiscovery.class));
+            }
+        });
 
         state_covid_button.setOnClickListener(new View.OnClickListener() {
             @Override
