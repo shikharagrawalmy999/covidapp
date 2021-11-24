@@ -192,4 +192,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/covid_update_button"
         app:layout_constraintVertical_bias="0.304" />
+
+    <Button
+        android:id="@+id/bluetoothDiscButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discover Devices"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statewise_covid"
+        app:layout_constraintVertical_bias="0.444" />
 </androidx.constraintlayout.widget.ConstraintLayout>
