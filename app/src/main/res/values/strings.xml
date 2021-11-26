@@ -46,4 +46,11 @@
     <string name="scan">Scan</string>
     <string name="mac_address">MAC Address</string>
     <string name="enter_bluetooth_mac_address">Enter Bluetooth MAC Address</string>
+    <string name="city_name">city_name</string>
+    <string name="state_name">state_name</string>
+    <string name="country_name">country_name</string>
+    <string name="postal_code">postal_code</string>
+    <string name="date">date</string>
+    <string name="time">time</string>
+    <string name="healthy_or_not">health-status</string>
 </resources>

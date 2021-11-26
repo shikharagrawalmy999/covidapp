@@ -43,4 +43,11 @@ public class Token implements Serializable {
     public void setDATE(String DATE) {
         this.DATE = DATE;
     }
+
+    public Token(String MAC_ADDRESS, String LATITUDE, String LONGITUDE, String DATE) {
+        this.MAC_ADDRESS = MAC_ADDRESS;
+        this.LATITUDE = LATITUDE;
+        this.LONGITUDE = LONGITUDE;
+        this.DATE = DATE;
+    }
 }
