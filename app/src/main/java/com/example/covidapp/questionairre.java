@@ -86,6 +86,5 @@ public class questionairre extends AppCompatActivity {
             reference.child(user.getUid()).child("status").setValue("At Risk");
         else reference.child(user.getUid()).child("status").setValue("Healthy");
         finish();
-
     }
 }

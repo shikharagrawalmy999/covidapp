@@ -7,7 +7,6 @@
     tools:context=".ProfileActivity">
 
 
-
     <TextView
         android:id="@+id/save"
         android:layout_width="80dp"
@@ -161,10 +160,44 @@
         tools:ignore="SpeakableTextPresentCheck,TextFields" />
 
     <TextView
+        android:id="@+id/macAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/mac_address"
+        android:textColor="@color/text_parent_color"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_edit_text" />
+
+    <EditText
+        android:id="@+id/mac_address_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:autofillHints="name"
+        android:background="@drawable/edit_bg"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/enter_bluetooth_mac_address"
+        android:padding="15dp"
+        android:textSize="16sp"
+        android:theme="@style/EditTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/gender"
+        app:layout_constraintTop_toBottomOf="@+id/macAddress"
+        tools:ignore="SpeakableTextPresentCheck,TextFields" />
+
+    <TextView
         android:id="@+id/questionairre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/edit_bg"
         android:backgroundTint="@color/blue"
         android:gravity="center"
@@ -176,8 +209,8 @@
         android:textColor="@color/blue"
         android:textStyle="bold"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/age"
-        app:layout_constraintTop_toBottomOf="@+id/age_edit_text" />
+        app:layout_constraintStart_toStartOf="@+id/mac_address_edit"
+        app:layout_constraintTop_toBottomOf="@+id/mac_address_edit" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

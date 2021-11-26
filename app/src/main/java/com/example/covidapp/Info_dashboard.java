@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,12 +32,24 @@ public class Info_dashboard extends AppCompatActivity {
     TextView name_txt,gender_text,age_text,phone_text,health_status;
 
     Button discover;
+    Button contactTracingDashboard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_dasboard);
         covid_button = (Button) findViewById(R.id.covid_update_button);
+
+        contactTracingDashboard = findViewById(R.id.contactTracingDashboard);
+
+
+        contactTracingDashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Info_dashboard.this, ContactTracingDashboard.class));
+            }
+        });
+
 
         covid_button.setOnClickListener(new View.OnClickListener() {
             @Override
