@@ -44,4 +44,6 @@
     <string name="number_of_cases">Number of Cases: </string>
     <string name="cases_today">Cases Today: </string>
     <string name="scan">Scan</string>
+    <string name="mac_address">MAC Address</string>
+    <string name="enter_bluetooth_mac_address">Enter Bluetooth MAC Address</string>
 </resources>
