@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.le.ScanFilter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -138,7 +139,8 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
                 currentToken.setLATITUDE(latitude);
                 currentToken.setMAC_ADDRESS(bluetoothDevice.getAddress());
 
-                reference.child(user.getUid()).child("Token").setValue(currentToken);
+                DatabaseReference tokenRef = reference.child(user.getUid()).child("Token");
+                tokenRef.push().setValue(currentToken);
 //                System.out.println("The latitude is: "+currentToken.LATITUDE);
 //                System.out.println("The longitude is: "+currentToken.LONGITUDE);
 //                System.out.println("The Date is: "+currentToken.DATE);
