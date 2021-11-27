@@ -9,6 +9,7 @@
     <string name="phone_number">Phone number</string>
     <string name="enter_phone_number">Enter phone number</string>
     <string name="age">Age</string>
+    <string name="body_ache">Body ache</string>
     <string name="healthy">Healthy</string>
     <string name="at_risk">At risk</string>
     <string name="health_status">Health Assessment Questionnaire</string>
@@ -54,4 +55,16 @@
     <string name="time">time</string>
     <string name="healthy_or_not">health-status</string>
     <string name="dash">Dash</string>
+    <string name="pink_eyes">Pink eyes</string>
+    <string name="hearing_impairment">Hearing impairment</string>
+    <string name="breath">Difficulty in Breathing</string>
+    <string name="loss">loss of senses of smell and taste</string>
+    <string name="hypertension">Hypertension</string>
+    <string name="kidney">Kidney Disorder</string>
+    <string name="have_you_got_tested_for_covid_19_in_the_last_5_days">Have you got tested for covid-19 in last 5 days?</string>
+    <string name="Yes">Yes</string>
+    <string name="yes">Yes, and I tested negative.</string>
+    <string name="yes_2">Yes, and tested positive.</string>
+    <string name="no">No</string>
+    <string name="have_you_come_in_contact_with_any_covid_19">Have you came in contact with any person who tested positive for covid or been alerted about the same via our app?</string>
 </resources>
