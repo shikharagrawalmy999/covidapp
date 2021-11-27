@@ -268,7 +268,6 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
                 if(knownName!=null){
                     System.out.println("known name is: "+knownName);
                 }
-
                 DatabaseReference tokenRef = reference.child(user.getUid()).child("Token");
                 tokenRef.push().setValue(currentToken);
 //                System.out.println("The latitude is: "+currentToken.LATITUDE);

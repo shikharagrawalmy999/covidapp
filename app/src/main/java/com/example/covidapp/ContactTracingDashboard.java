@@ -8,6 +8,8 @@ import android.util.Log;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +25,8 @@ public class ContactTracingDashboard extends AppCompatActivity {
     DatabaseReference reference;
     DatabaseReference userReference;
     ArrayList<Token> tokenList;
+    long number_children;
+    long i=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,10 @@ public class ContactTracingDashboard extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                number_children= snapshot.getChildrenCount();;
 
                 for (DataSnapshot data : snapshot.getChildren()){
+
                     DatabaseReference currentTokenReference = reference.child(data.getKey());
                     currentTokenReference.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -81,6 +87,16 @@ public class ContactTracingDashboard extends AppCompatActivity {
 //
 //                                }
 //                            });
+                            i++;
+                            if(i==number_children){
+                                if(tokenList.isEmpty()){
+                                    System.out.println("You're ded!!!!!");
+                                }
+
+                                for(int i=tokenList.size()-1;i>=0;i--){
+                                    System.out.println(tokenList.get(i).getMAC_ADDRESS());
+                                }
+                            }
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -94,13 +110,6 @@ public class ContactTracingDashboard extends AppCompatActivity {
                 System.out.println("Error occurred!");
             }
         });
-        if(tokenList.isEmpty()){
-            System.out.println("You're ded!!!!!");
-        }
-
-        for(int i=tokenList.size()-1;i>=0;i--){
-            System.out.println(tokenList.get(i).getMAC_ADDRESS());
-        }
 
 
 
