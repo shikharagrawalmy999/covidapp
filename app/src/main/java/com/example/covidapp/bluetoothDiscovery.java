@@ -42,12 +42,7 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
     protected LocationManager locationManager;
     protected Context context;
     protected String latitude, longitude;
-    Geocoder geocoder;
-    List<Address> addresses;
 
-    private BluetoothLeScanner bluetoothLeScanner;
-    private boolean scanning;
-    private Handler handler;
     private static final long SCAN_PERIOD = 10000;
     Button enableDiscovery;
 
@@ -65,7 +60,6 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        geocoder = new Geocoder(this, Locale.getDefault());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth_discovery);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -87,9 +81,6 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
         reference= FirebaseDatabase.getInstance().getReference().child("users");
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        bluetoothLeScanner = bluetoothAdapter.getBluetoothLeScanner();
-
-        handler = new Handler();
 
         bluetoothListView = (ListView) findViewById(R.id.bluetoothDevices);
         bluetoothList = new ArrayList<String>();
@@ -123,40 +114,13 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
             }
         });
     }
-//    // Device scan callback.
-//    private final ScanCallback leScanCallback =
-//            new ScanCallback() {
-//                @Override
-//                public void onScanResult(int callbackType, ScanResult result) {
-//                    super.onScanResult(callbackType, result);
-//                    System.out.println(result.getDevice().getName()+":::::"+result.getDevice().getAddress());
-//                }
-//            };
-//
-//    private void scanLeDevice() {
-//        if (!scanning) {
-//            // Stops scanning after a predefined scan period.
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    scanning = false;
-//                    bluetoothLeScanner.stopScan(leScanCallback);
-//                }
-//            }, SCAN_PERIOD);
-//
-//            scanning = true;
-//            bluetoothLeScanner.startScan(leScanCallback);
-//        } else {
-//            scanning = false;
-//            bluetoothLeScanner.stopScan(leScanCallback);
-//        }
-//    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // Don't forget to unregister the ACTION_FOUND receiver.
-        unregisterReceiver(broadcastReceiver);
-        unregisterReceiver(mBroadcastReceiver2);
+//        unregisterReceiver(broadcastReceiver);
+//        unregisterReceiver(mBroadcastReceiver2);
     }
 
     @Override
@@ -238,43 +202,10 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
                 currentToken.setDATE(current_Date.toString());
                 currentToken.setLONGITUDE(longitude);
                 currentToken.setLATITUDE(latitude);
-                currentToken.setMAC_ADDRESS(bluetoothDevice.getAddress());
-                try {
-                    addresses = geocoder.getFromLocation(Double.parseDouble(latitude), Double.parseDouble(longitude), 1);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String country = addresses.get(0).getCountryName();
-                String postalCode = addresses.get(0).getPostalCode();
-                String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
-                if(address!=null){
-                    System.out.println("Address is: "+address);
-                }
-                if(city!=null){
-                    System.out.println("City is: "+city);
-                }
-                if(state!=null){
-                    System.out.println("State is: "+state);
-                }
-                if(country!=null){
-                    System.out.println("Country is: "+country);
-                }
-                if(postalCode!=null){
-                    System.out.println("postal code is: "+postalCode);
-                }
-                if(knownName!=null){
-                    System.out.println("known name is: "+knownName);
-                }
+                currentToken.setMAC_ADDRESS(bluetoothDevice.getAddress().toUpperCase());
 
                 DatabaseReference tokenRef = reference.child(user.getUid()).child("Token");
                 tokenRef.push().setValue(currentToken);
-//                System.out.println("The latitude is: "+currentToken.LATITUDE);
-//                System.out.println("The longitude is: "+currentToken.LONGITUDE);
-//                System.out.println("The Date is: "+currentToken.DATE);
-//                System.out.println("The MAC Address is: "+currentToken.MAC_ADDRESS);
 
                 bluetoothList.add(bluetoothDevice.getName());
                 mDeviceList.add(bluetoothDevice);

@@ -3,9 +3,14 @@ package com.example.covidapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.icu.text.IDNA;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
@@ -30,7 +35,8 @@ public class Info_dashboard extends AppCompatActivity {
     TextView edit,logout;
     GoogleSignInClient mGoogleSignInClient;
     TextView name_txt,gender_text,age_text,phone_text,health_status;
-
+    BluetoothAdapter mBluetoothAdapter;
+    private static final String TAG = "InfoDashboard";
     Button discover;
     Button contactTracingDashboard;
 
@@ -39,7 +45,8 @@ public class Info_dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_dasboard);
         covid_button = (Button) findViewById(R.id.covid_update_button);
-
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        enableDisableBT();
         contactTracingDashboard = findViewById(R.id.contactTracingDashboard);
 
 
@@ -133,6 +140,48 @@ public class Info_dashboard extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
+    }
+
+    private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            // When discovery finds a device
+            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
+                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
+
+                switch(state){
+                    case BluetoothAdapter.STATE_OFF:
+                        Log.d(TAG, "onReceive: STATE OFF");
+                        break;
+                    case BluetoothAdapter.STATE_TURNING_OFF:
+                        Log.d(TAG, "mBroadcastReceiver1: STATE TURNING OFF");
+                        break;
+                    case BluetoothAdapter.STATE_ON:
+                        Log.d(TAG, "mBroadcastReceiver1: STATE ON");
+                        break;
+                    case BluetoothAdapter.STATE_TURNING_ON:
+                        Log.d(TAG, "mBroadcastReceiver1: STATE TURNING ON");
+                        break;
+                }
+            }
+        }
+    };
+
+    public void enableDisableBT(){
+        if(mBluetoothAdapter == null){
+            Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
+        }
+        if(!mBluetoothAdapter.isEnabled()){
+            Log.d(TAG, "enableDisableBT: enabling BT.");
+            Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivity(enableBTIntent);
+
+            IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+            registerReceiver(mBroadcastReceiver1, BTIntent);
+        }
+        if(mBluetoothAdapter.isEnabled()){
+            Log.d(TAG, "enableDisableBT: Already Enabled BT.");
+        }
     }
     public void openCovidUpdate(){
         Intent intent = new Intent(this, CovidUpdates.class);

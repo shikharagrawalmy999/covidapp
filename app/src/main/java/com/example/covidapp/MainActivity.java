@@ -2,7 +2,10 @@ package com.example.covidapp;
 
 import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.util.Log;
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
    @Override
    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
        super.onActivityResult(requestCode, resultCode, data);
@@ -118,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(user!=null){
+
             gotoProfile();
         }
     }
