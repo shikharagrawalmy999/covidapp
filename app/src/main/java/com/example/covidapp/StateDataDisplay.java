@@ -1,6 +1,9 @@
 package com.example.covidapp;
+import static java.lang.Math.abs;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.widget.TextView;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +12,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,9 +49,10 @@ public class StateDataDisplay extends AppCompatActivity {
         Intent intent = getIntent();
         String str = intent.getStringExtra("message_key");
 
-        System.out.println(str);
+        //System.out.println(str);
 
         String json_string=fetch_json_string();
+        JSONObject object = null;
 
         try {
 
@@ -44,7 +61,7 @@ public class StateDataDisplay extends AppCompatActivity {
 
             JSONArray array= root.getJSONArray("regionData");
 
-            JSONObject object = null;
+
 
             for(int i=0;i<array.length();i++)
             {
@@ -54,8 +71,6 @@ public class StateDataDisplay extends AppCompatActivity {
                 }
             }
 
-            System.out.println("htg_sensei");
-            System.out.println(object);
 
 
             TextView tv1 = (TextView)findViewById(R.id.state_name_id);
@@ -73,6 +88,36 @@ public class StateDataDisplay extends AppCompatActivity {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        PieChart pieChart = findViewById(R.id.pieChart_view);
+
+        ArrayList<PieEntry> parameter = new ArrayList<>();
+        try{
+            parameter.add(new PieEntry(abs(Integer.parseInt(object.getString("activeCases"))),"Active Cases"));
+            parameter.add(new PieEntry(abs(Integer.parseInt(object.getString("newInfected"))), "Newly Infected"));
+            parameter.add(new PieEntry(abs(Integer.parseInt(object.getString("newRecovered"))), "Newly Recovered"));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        PieDataSet pieDataSet = new PieDataSet(parameter, "");
+        //setting x axis
+//        String[] xAxisLables = new String[]{"Active Cases", "Newly Infected", "Recovered", "Newly Recovered"};
+//        chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLables));
+
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        PieData pieData = new PieData(pieDataSet);
+        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setValueTextSize(16f);
+
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setCenterText("COVID-DATA");
+        pieChart.setData(pieData);
+        pieChart.animate();
+        pieChart.invalidate();
+
 
     }
 
@@ -120,4 +165,24 @@ public class StateDataDisplay extends AppCompatActivity {
         }
         return json_string[0];
     }
+    private BarDataSet getDataSet(JSONObject object) {
+
+        ArrayList<BarEntry> valueSet = new ArrayList<>();
+        try{
+            valueSet.add(new BarEntry(0,Integer.parseInt(object.getString("activeCases"))));
+            valueSet.add(new BarEntry(1,Integer.parseInt(object.getString("newInfected"))));
+            valueSet.add(new BarEntry(2,Integer.parseInt(object.getString("recovered"))));
+            valueSet.add(new BarEntry(3,Integer.parseInt(object.getString("newRecovered"))));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        BarDataSet barDataSet = new BarDataSet(valueSet, "Numbers");
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+
+        return barDataSet;
+    }
+
 }

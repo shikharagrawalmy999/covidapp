@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_gravity="center"
     android:layout_margin="20dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#1C2F54">
 
     <ProgressBar
         android:id="@+id/progressBar"

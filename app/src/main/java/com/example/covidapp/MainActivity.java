@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoProfile(){
-        Intent intent = new Intent(MainActivity.this, Info_dashboard.class);
+        Intent intent = new Intent(MainActivity.this, dashboardDataAnalysis.class);
        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(user!=null){
-
             gotoProfile();
         }
     }

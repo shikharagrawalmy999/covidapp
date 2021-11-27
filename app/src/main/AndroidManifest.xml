@@ -38,6 +38,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
+            android:name=".personalDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".covidUpdatesOptions"
+            android:exported="false" />
+        <activity
+            android:name=".dashboardDataAnalysis"
+            android:exported="false" />
+        <activity
+            android:name=".pieChart"
+            android:exported="false" />
+        <activity
+            android:name=".dataRepresentation"
+            android:exported="false" />
+        <activity
             android:name=".ContactTracingDashboard"
             android:exported="true" />
         <activity

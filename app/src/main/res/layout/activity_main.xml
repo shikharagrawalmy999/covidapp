@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.covidapp.MainActivity">
+    tools:context="com.example.covidapp.MainActivity"
+    android:background="#1C2F54">
 
 
     <LinearLayout
@@ -17,8 +18,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781">
 
 
         <ImageView
@@ -37,9 +40,19 @@
             android:layout_weight="1"
             android:padding="15dp"
             android:text="@string/sign_in_with_google"
-            android:textColor="@color/blue_grey_900"
+            android:textColor="#ffffff"
             android:textSize="15sp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="529dp"
+        android:layout_height="717dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/quaranteam_blue" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

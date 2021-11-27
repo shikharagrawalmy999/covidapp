@@ -12,6 +12,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,6 +77,7 @@ public class covid_states_data extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
 
     }

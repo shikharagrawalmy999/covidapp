@@ -53,4 +53,5 @@
     <string name="date">date</string>
     <string name="time">time</string>
     <string name="healthy_or_not">health-status</string>
+    <string name="dash">Dash</string>
 </resources>
