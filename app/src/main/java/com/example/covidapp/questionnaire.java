@@ -92,7 +92,7 @@ public class questionnaire extends AppCompatActivity {
     }
 
     public void Check() {
-        reference.child(user.getUid()).child("status").setValue(healthRatio);
+        reference.child(user.getUid()).child("status").setValue(""+healthRatio);
         QuestionOne response1 = new QuestionOne();
         QuestionThree response3 = new QuestionThree();
         QuestionTwo response2 = new QuestionTwo();
