@@ -32,13 +32,13 @@
     <string name="sore_throat">Sore throat</string>
     <string name="asthma">Asthma</string>
     <string name="htg_sensei">htg_sensei</string>
-    <string name="health_questionairre">Health Questionairre</string>
+    <string name="health_questionnaire">Health questionnaire</string>
     <string name="do_you_have_any_of_the_pre_existing_conditions">Do you have any of the pre-existing conditions?</string>
     <string name="have_you_come_in_contact_with_any_covid_19_patient_in_the_last_14_days">Have you come in contact with any Covid-19 patient in the last 14 days?</string>
     <string name="are_feeling_any_of_the_below_symptoms">Are you feeling any of the below symptoms?</string>
     <string name="none">None</string>
     <string name="enter_age">Enter Age</string>
-    <string name="health_assessment_questionairre">Health Assessment Questionairre</string>
+    <string name="health_assessment_questionnaire">Health Assessment questionnaire</string>
     <string name="covid_updates">Nationwide Covid Updates</string>
     <string name="statewise_covid_updates">Statewise Covid Updates</string>
     <string name="submit">Submit</string>

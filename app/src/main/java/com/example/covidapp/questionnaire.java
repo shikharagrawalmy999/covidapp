@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class questionairre extends AppCompatActivity {
+public class questionnaire extends AppCompatActivity {
     public ArrayList<CheckBox> checkboxes;
     DatabaseReference reference;
     FirebaseAuth auth;
@@ -30,7 +30,7 @@ public class questionairre extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questionairre);
+        setContentView(R.layout.activity_questionnaire);
 
         submit_button=findViewById(R.id.submit_button);
         auth=FirebaseAuth.getInstance();
@@ -73,19 +73,19 @@ public class questionairre extends AppCompatActivity {
                             Check();
                         }
                         else{
-                            Toast.makeText(questionairre.this,"Please answer 4th question", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(questionnaire.this,"Please answer 4th question", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
-                        Toast.makeText(questionairre.this, "Please answer 3rd question", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(questionnaire.this, "Please answer 3rd question", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
-                    Toast.makeText(questionairre.this, "Please answer 2nd question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(questionnaire.this, "Please answer 2nd question", Toast.LENGTH_SHORT).show();
                 }
             }
             else{
-                Toast.makeText(questionairre.this, "Please answer 1st question", Toast.LENGTH_SHORT).show();
+                Toast.makeText(questionnaire.this, "Please answer 1st question", Toast.LENGTH_SHORT).show();
             }
         });
 

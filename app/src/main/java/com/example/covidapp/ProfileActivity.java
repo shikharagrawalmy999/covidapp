@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     DatabaseReference reference;
-    TextView questionairre;
+    TextView questionnaire;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +37,13 @@ public class ProfileActivity extends AppCompatActivity {
         gender_edit=findViewById(R.id.gender_edit_text);
         phone_number_edit=findViewById(R.id.phone_edit_text);
         age_edit=findViewById(R.id.age_edit_text);
-        questionairre=findViewById(R.id.questionairre);
+        questionnaire=findViewById(R.id.questionnaire);
         mac_address_edit = findViewById(R.id.mac_address_edit);
 
         save=findViewById(R.id.save);
 
-        questionairre.setOnClickListener(v->{
-            Intent info_dashboard=new Intent(ProfileActivity.this, questionairre.class);
+        questionnaire.setOnClickListener(v->{
+            Intent info_dashboard=new Intent(ProfileActivity.this, questionnaire.class);
             startActivity(info_dashboard);
         });
 
