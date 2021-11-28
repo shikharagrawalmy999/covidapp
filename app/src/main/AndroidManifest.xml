@@ -59,7 +59,7 @@
             android:name=".bluetoothDiscovery"
             android:exported="false" />
         <activity
-            android:name=".questionairre"
+            android:name=".questionnaire"
             android:exported="true" />
         <activity
             android:name=".Info_dashboard"

@@ -205,7 +205,7 @@
         tools:ignore="SpeakableTextPresentCheck,TextFields" />
 
     <TextView
-        android:id="@+id/questionairre"
+        android:id="@+id/questionnaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
@@ -217,9 +217,9 @@
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
-        android:shadowColor="@color/amber_900"
-        android:text="@string/health_assessment_questionairre"
-        android:textColor="@color/amber_900"
+
+        android:text="@string/health_assessment_questionnaire"
+        android:textColor="@color/blue"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/mac_address_edit"

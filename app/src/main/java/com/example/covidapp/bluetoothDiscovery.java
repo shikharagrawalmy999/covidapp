@@ -43,9 +43,6 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
     protected Context context;
     protected String latitude, longitude;
 
-    private static final long SCAN_PERIOD = 10000;
-    Button enableDiscovery;
-
     FirebaseAuth auth;
     FirebaseUser user;
     DatabaseReference reference;
@@ -89,21 +86,20 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
         bluetoothListView.setAdapter(bluetoothAdp);
 
         scanBtn = findViewById(R.id.scanButton);
-        enableDiscovery = findViewById(R.id.enableDiscovery);
 
-        enableDiscovery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
-
-                Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-                startActivity(discoverableIntent);
-
-                IntentFilter intentFilter = new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
-                registerReceiver(mBroadcastReceiver2,intentFilter);
-            }
-        });
+//        enableDiscovery.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                System.out.println("btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
+//
+//                Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+//                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+//                startActivity(discoverableIntent);
+//
+//                IntentFilter intentFilter = new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
+//                registerReceiver(mBroadcastReceiver2,intentFilter);
+//            }
+//        });
 
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,39 +145,39 @@ public class bluetoothDiscovery extends AppCompatActivity implements LocationLis
         System.out.println("Bluetooth Discovery has started");
     }
 
-    private final BroadcastReceiver mBroadcastReceiver2 = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-
-            if (action.equals(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED)) {
-
-                int mode = intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, BluetoothAdapter.ERROR);
-
-                switch (mode) {
-                    //Device is in Discoverable Mode
-                    case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
-                        System.out.println( "mBroadcastReceiver2: Discoverability Enabled.");
-                        break;
-                    //Device not in discoverable mode
-                    case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
-                        System.out.println("mBroadcastReceiver2: Discoverability Disabled. Able to receive connections.");
-                        break;
-                    case BluetoothAdapter.SCAN_MODE_NONE:
-                        System.out.println("mBroadcastReceiver2: Discoverability Disabled. Not able to receive connections.");
-                        break;
-                    case BluetoothAdapter.STATE_CONNECTING:
-                        System.out.println("mBroadcastReceiver2: Connecting....");
-                        break;
-                    case BluetoothAdapter.STATE_CONNECTED:
-                        System.out.println("mBroadcastReceiver2: Connected.");
-                        break;
-                }
-
-            }
-        }
-    };
+//    private final BroadcastReceiver mBroadcastReceiver2 = new BroadcastReceiver() {
+//
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            final String action = intent.getAction();
+//
+//            if (action.equals(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED)) {
+//
+//                int mode = intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, BluetoothAdapter.ERROR);
+//
+//                switch (mode) {
+//                    //Device is in Discoverable Mode
+//                    case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
+//                        System.out.println( "mBroadcastReceiver2: Discoverability Enabled.");
+//                        break;
+//                    //Device not in discoverable mode
+//                    case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
+//                        System.out.println("mBroadcastReceiver2: Discoverability Disabled. Able to receive connections.");
+//                        break;
+//                    case BluetoothAdapter.SCAN_MODE_NONE:
+//                        System.out.println("mBroadcastReceiver2: Discoverability Disabled. Not able to receive connections.");
+//                        break;
+//                    case BluetoothAdapter.STATE_CONNECTING:
+//                        System.out.println("mBroadcastReceiver2: Connecting....");
+//                        break;
+//                    case BluetoothAdapter.STATE_CONNECTED:
+//                        System.out.println("mBroadcastReceiver2: Connected.");
+//                        break;
+//                }
+//
+//            }
+//        }
+//    };
 
 
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {

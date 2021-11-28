@@ -35,7 +35,6 @@ public class Info_dashboard extends AppCompatActivity {
     TextView edit,logout;
     GoogleSignInClient mGoogleSignInClient;
     TextView name_txt,gender_text,age_text,phone_text,health_status;
-    BluetoothAdapter mBluetoothAdapter;
     private static final String TAG = "InfoDashboard";
     Button discover;
     Button chart_button;
@@ -48,8 +47,6 @@ public class Info_dashboard extends AppCompatActivity {
         covid_button = (Button) findViewById(R.id.covid_update_button);
         chart_button = (Button) findViewById(R.id.chartBtn);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        enableDisableBT();
         contactTracingDashboard = findViewById(R.id.contactTracingDashboard);
 
 
@@ -151,47 +148,6 @@ public class Info_dashboard extends AppCompatActivity {
 
     }
 
-    private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            // When discovery finds a device
-            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
-                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-
-                switch(state){
-                    case BluetoothAdapter.STATE_OFF:
-                        Log.d(TAG, "onReceive: STATE OFF");
-                        break;
-                    case BluetoothAdapter.STATE_TURNING_OFF:
-                        Log.d(TAG, "mBroadcastReceiver1: STATE TURNING OFF");
-                        break;
-                    case BluetoothAdapter.STATE_ON:
-                        Log.d(TAG, "mBroadcastReceiver1: STATE ON");
-                        break;
-                    case BluetoothAdapter.STATE_TURNING_ON:
-                        Log.d(TAG, "mBroadcastReceiver1: STATE TURNING ON");
-                        break;
-                }
-            }
-        }
-    };
-
-    public void enableDisableBT(){
-        if(mBluetoothAdapter == null){
-            Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
-        }
-        if(!mBluetoothAdapter.isEnabled()){
-            Log.d(TAG, "enableDisableBT: enabling BT.");
-            Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivity(enableBTIntent);
-
-            IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(mBroadcastReceiver1, BTIntent);
-        }
-        if(mBluetoothAdapter.isEnabled()){
-            Log.d(TAG, "enableDisableBT: Already Enabled BT.");
-        }
-    }
     public void openCovidUpdate(){
         Intent intent = new Intent(this, CovidUpdates.class);
         startActivity(intent);
