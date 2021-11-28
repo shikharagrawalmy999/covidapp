@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".personalDashboard">
+    tools:context=".personalDashboard"
+    android:background="#1C2F54">
 
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:text="@string/name"
         android:textColor="@color/text_parent_color"
         android:textSize="18sp"
@@ -25,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:textColor="@color/grey_700"
+        android:textColor="#ffffff"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -49,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:textColor="@color/grey_700"
+        android:textColor="#ffffff"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/gender"
@@ -63,7 +64,7 @@
         android:layout_marginTop="15dp"
         android:text="@string/phone_number"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender_txt" />
@@ -73,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:textColor="@color/grey_700"
+        android:textColor="#ffffff"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/phone"
@@ -87,7 +88,7 @@
         android:layout_marginTop="15dp"
         android:text="@string/age"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_txt" />
@@ -97,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:textColor="@color/grey_700"
+        android:textColor="#ffffff"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/phone"
@@ -109,9 +110,9 @@
         android:layout_height="18dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:text="@string/health_status"
+        android:text="Health Status"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age_txt" />
@@ -121,7 +122,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:textColor="@color/grey_700"
+        android:textColor="#ffffff"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/phone"
@@ -143,14 +144,15 @@
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="244dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="365dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/googlesans_bold"
         android:text="Personal  Health"
-        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

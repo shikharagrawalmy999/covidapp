@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".covid_states_data">
+    tools:context=".covid_states_data"
+    android:background="#1C2F54">
 
     <TextView
         android:id="@+id/covid_heading"
-        android:layout_width="368dp"
-        android:layout_height="40dp"
+        android:layout_width="373dp"
+        android:layout_height="47dp"
         android:layout_marginTop="56dp"
-        android:text="Statewise COVID Updates"
-        android:textSize="30sp"
+        android:fontFamily="@font/googlesans_bold"
+        android:text="Select State"
+        android:textColor="#ffffff"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/state_list_view"
         app:layout_constraintEnd_toEndOf="parent"

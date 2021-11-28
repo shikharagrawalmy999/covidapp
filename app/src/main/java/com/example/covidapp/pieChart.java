@@ -13,6 +13,6 @@ public class pieChart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
 
-        PieChart piechart = findViewById(R.id.pieChartID);
+        PieChart piechart = findViewById(R.id.nationalPieChart_id);
     }
 }
