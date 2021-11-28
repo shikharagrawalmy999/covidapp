@@ -12,8 +12,8 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:text="@string/name"
         android:textColor="@color/text_parent_color"
         android:textSize="18sp"
@@ -59,7 +59,7 @@
     <TextView
         android:id="@+id/phone"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:text="@string/phone_number"
@@ -83,7 +83,7 @@
     <TextView
         android:id="@+id/age"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:text="@string/age"
@@ -107,7 +107,7 @@
     <TextView
         android:id="@+id/health"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:text="Health Status"
@@ -117,36 +117,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age_txt" />
 
-    <TextView
-        android:id="@+id/age_txt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="#ffffff"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/phone"
-        app:layout_constraintTop_toBottomOf="@+id/health" />
-
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/line_chart_personal"
         android:layout_width="384dp"
         android:layout_height="216dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/white"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age_txt2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/health_val_id"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="365dp"
         android:layout_height="46dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/googlesans_bold"
         android:text="Personal  Health"
         android:textColor="#ffffff"
@@ -155,5 +145,44 @@
         app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_id"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="372dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:minWidth="200dp"
+        android:minHeight="50dp"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/health" />
+
+    <TextView
+        android:id="@+id/infectedContacted_id"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/health"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/health" />
+
+    <TextView
+        android:id="@+id/health_val_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_id" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -167,6 +167,15 @@ public class dashboardDataAnalysis extends AppCompatActivity implements Location
             }
         });
 
+        CardView card_view6 = (CardView) findViewById(R.id.card_view_questionnaire); // creating a CardView and assigning a value.
+        card_view6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(dashboardDataAnalysis.this, questionnaire.class);
+
+                startActivity(intent);
+            }
+        });
 
         startThread();
     }

@@ -2,15 +2,28 @@ package com.example.covidapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,12 +43,15 @@ public class ContactTracingDashboard extends AppCompatActivity {
     Geocoder geocoder;
     List<Address> addresses;
     long number_children;
+    ArrayList<Integer> yAxis_array_list;
     long i=0;
 
     int j=0;
     long number_children_2;
     ArrayList<RecyclerData> recyclerDataArrayList;
     RecyclerView recyclerView;
+
+    Button visualizeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +68,14 @@ public class ContactTracingDashboard extends AppCompatActivity {
         recyclerDataArrayList=new ArrayList<RecyclerData>();
         geocoder = new Geocoder(this, Locale.getDefault());
 
+        yAxis_array_list = new ArrayList<>();
+
+        //visualizeBtn = (Button) findViewById(R.id.patterns_id);
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                number_children= snapshot.getChildrenCount();;
+                number_children= snapshot.getChildrenCount();
 
                 for (DataSnapshot data : snapshot.getChildren()){
 
@@ -98,6 +118,13 @@ public class ContactTracingDashboard extends AppCompatActivity {
             }
         });
 
+//        visualizeBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(ContactTracingDashboard.this, proximityPatterns.class));
+//            }
+//        });
+
     }
     boolean check = false;
     int nice;
@@ -113,15 +140,27 @@ public class ContactTracingDashboard extends AppCompatActivity {
                             check=false;
                         }
                         else{
-                            String s1=data.child("mac_address").getValue(String.class);
-                            String s2 = tokenList.get(nice).getMAC_ADDRESS();
-                            s1=s1.toUpperCase();
-                            s2=s2.toUpperCase();
-                            check = s1.equals(s2);
+                            if(nice>=0 && nice<tokenList.size())
+                            {
+                                String s1=data.child("mac_address").getValue(String.class);
+                                String s2 = tokenList.get(nice).getMAC_ADDRESS();
+                                s1=s1.toUpperCase();
+                                s2=s2.toUpperCase();
+                                check = s1.equals(s2);
+                            }
                         }
                         if (check){
                             correctTokenList.add(tokenList.get(nice));
                             check=false;
+
+                            if(Double.parseDouble(data.child("status").getValue(String.class)) > 0.9)
+                            {
+//                                String  token_date = data.child("date").getValue(String.class).substring(4,10) + data.child("date").getValue(String.class).substring(-4,0);
+//                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
+//                                LocalDate date = LocalDate.parse(token_date, formatter);
+                                userReference.child(user.getUid()).child("alert").setValue("Contact Hospital");
+                            }
+
                             break;
                         } else {
 
@@ -144,7 +183,12 @@ public class ContactTracingDashboard extends AppCompatActivity {
                             String postalCode = addresses.get(0).getPostalCode();
                             String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
                             recyclerDataArrayList.add(new RecyclerData(city, state, country, postalCode, correctTokenList.get(l).getDATE().substring(0,10)+" 2021", correctTokenList.get(l).getDATE().substring(11,19), "Healthy"));
+
+
                         }
+
+                        getProximityNumbers();
+                        makeProximityGraph();
 
                         // added data from arraylist to adapter class.
                         RecyclerViewAdapter adapter=new RecyclerViewAdapter(recyclerDataArrayList,ContactTracingDashboard.this);
@@ -168,4 +212,52 @@ public class ContactTracingDashboard extends AppCompatActivity {
         }
 
     }
+
+    private void getProximityNumbers()
+    {
+        Integer[] yAxis = new Integer[24];
+
+        for(int i=0;i<24;i++)
+        {
+            yAxis[i] = 0;
+        }
+
+        Integer curr_token_date;
+
+        for(int i=0; i<correctTokenList.size(); i++)
+        {
+            curr_token_date = Integer.parseInt(correctTokenList.get(i).getDATE().substring(11,13));
+
+            yAxis[curr_token_date]++;
+
+        }
+
+        this.yAxis_array_list = new ArrayList<Integer>(Arrays.asList(yAxis));
+    }
+
+    private void makeProximityGraph()
+    {
+        LineChart chart = (LineChart) findViewById(R.id.line_chart_proximity);
+
+
+        ArrayList<Integer> yAxis = this.yAxis_array_list;
+
+        ArrayList<Entry> entries = new ArrayList<>();
+
+        for(int i=0;i<24;i++)
+        {
+            entries.add(new Entry(i, yAxis.get(i)));
+        }
+
+        LineDataSet chartdata = new LineDataSet(entries, "Proximity Status");
+
+        LineData lineData = new LineData(chartdata);
+
+        chart.getDescription().setText("Proximity Line Chart");
+        chart.animateXY(2000, 2000);
+        chart.setData(lineData);
+        chart.invalidate();
+    }
+
+
 }
