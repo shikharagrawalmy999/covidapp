@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
                         userReference = FirebaseDatabase.getInstance().getReference().child("users");
                         userReference.child(user.getUid()).child("alert").setValue("Safe");
 
+                        DatabaseReference tokenRef = userReference.child(user.getUid()).child("Token");
+
                         assert user != null;
 
 
