@@ -68,7 +68,7 @@ public class ContactTracingDashboard extends AppCompatActivity {
         // created new array list..
         recyclerDataArrayList=new ArrayList<RecyclerData>();
         geocoder = new Geocoder(this, Locale.getDefault());
-
+        health_status_arr = new ArrayList<>();
         yAxis_array_list = new ArrayList<>();
 
 
