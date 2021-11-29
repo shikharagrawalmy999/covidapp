@@ -113,11 +113,13 @@ public class ContactTracingDashboard extends AppCompatActivity {
                             check=false;
                         }
                         else{
-                            String s1=data.child("mac_address").getValue(String.class);
-                            String s2 = tokenList.get(nice).getMAC_ADDRESS();
-                            s1=s1.toUpperCase();
-                            s2=s2.toUpperCase();
-                            check = s1.equals(s2);
+                            if(nice>=0 && nice<tokenList.size()){
+                                String s1=data.child("mac_address").getValue(String.class);
+                                String s2 = tokenList.get(nice).getMAC_ADDRESS();
+                                s1=s1.toUpperCase();
+                                s2=s2.toUpperCase();
+                                check = s1.equals(s2);
+                            }
                         }
                         if (check){
                             correctTokenList.add(tokenList.get(nice));

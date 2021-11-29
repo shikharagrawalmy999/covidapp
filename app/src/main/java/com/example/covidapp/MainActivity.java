@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                         user = auth.getCurrentUser();
 
                         assert user != null;
-
                         gotoProfile();
                     }
                     else{
