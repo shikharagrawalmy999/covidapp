@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -136,6 +137,9 @@ public class questionnaire extends AppCompatActivity {
         reference.child(user.getUid()).child("Question4").setValue(response4);
 
         Toast.makeText(getApplicationContext(), "Questionnaire submitted", Toast.LENGTH_SHORT).show();
+
+        startActivity(new Intent(questionnaire.this, ProfileActivity.class));
+
         finish();
     }
 

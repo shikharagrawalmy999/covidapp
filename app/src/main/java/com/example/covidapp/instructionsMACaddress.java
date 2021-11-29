@@ -22,7 +22,7 @@ public class instructionsMACaddress extends AppCompatActivity {
         gotItBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(instructionsMACaddress.this, ProfileActivity.class));
+                startActivity(new Intent(instructionsMACaddress.this, questionnaire.class));
             }
         });
 

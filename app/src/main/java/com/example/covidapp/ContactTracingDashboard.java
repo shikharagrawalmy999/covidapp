@@ -8,6 +8,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -52,7 +53,7 @@ public class ContactTracingDashboard extends AppCompatActivity {
     RecyclerView recyclerView;
 
     Button visualizeBtn;
-
+    ArrayList<String> health_status_arr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,8 @@ public class ContactTracingDashboard extends AppCompatActivity {
         geocoder = new Geocoder(this, Locale.getDefault());
 
         yAxis_array_list = new ArrayList<>();
+
+
 
         //visualizeBtn = (Button) findViewById(R.id.patterns_id);
 
@@ -151,6 +154,14 @@ public class ContactTracingDashboard extends AppCompatActivity {
                         }
                         if (check){
                             correctTokenList.add(tokenList.get(nice));
+                            if(data.child("status").getValue(String.class)!=null)
+                            {
+                                health_status_arr.add(data.child("status").getValue(String.class).substring(0,3));
+                            }else
+                            {
+                                health_status_arr.add("(None)");
+                            }
+
                             check=false;
 
                             if(Double.parseDouble(data.child("status").getValue(String.class)) > 0.9)
@@ -182,7 +193,16 @@ public class ContactTracingDashboard extends AppCompatActivity {
                             String country = addresses.get(0).getCountryName();
                             String postalCode = addresses.get(0).getPostalCode();
                             String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
-                            recyclerDataArrayList.add(new RecyclerData(city, state, country, postalCode, correctTokenList.get(l).getDATE().substring(0,10)+" 2021", correctTokenList.get(l).getDATE().substring(11,19), "Healthy"));
+
+                            if(health_status_arr.get(l)==null)
+                            {
+                                recyclerDataArrayList.add(new RecyclerData(city, state, country, postalCode, correctTokenList.get(l).getDATE().substring(0,10)+" 2021", correctTokenList.get(l).getDATE().substring(11,19), "Health Status: (None)"));
+                            }
+                            else
+                            {
+                                recyclerDataArrayList.add(new RecyclerData(city, state, country, postalCode, correctTokenList.get(l).getDATE().substring(0,10)+" 2021", correctTokenList.get(l).getDATE().substring(11,19), "Health Status: "+health_status_arr.get(l)));
+                            }
+
 
 
                         }

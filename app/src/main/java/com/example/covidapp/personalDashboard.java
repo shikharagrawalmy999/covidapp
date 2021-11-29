@@ -77,6 +77,8 @@ public class personalDashboard extends AppCompatActivity {
                 String status = snapshot.child("status").getValue(String.class);
                 String alert = snapshot.child("alert").getValue(String.class);
 
+
+
                 status = "" +  (100 - ((int) (Double.parseDouble(status)*100)));
 
                 name_txt.setText(name);

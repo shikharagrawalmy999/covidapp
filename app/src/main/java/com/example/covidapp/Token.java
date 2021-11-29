@@ -8,6 +8,7 @@ public class Token implements Serializable {
     private String LATITUDE;
     private String LONGITUDE;
     private String DATE;
+    private String HEALTH_STATUS;
 
     public Token(){
 
@@ -44,10 +45,12 @@ public class Token implements Serializable {
         this.DATE = DATE;
     }
 
+
     public Token(String MAC_ADDRESS, String LATITUDE, String LONGITUDE, String DATE) {
         this.MAC_ADDRESS = MAC_ADDRESS;
         this.LATITUDE = LATITUDE;
         this.LONGITUDE = LONGITUDE;
         this.DATE = DATE;
+
     }
 }
