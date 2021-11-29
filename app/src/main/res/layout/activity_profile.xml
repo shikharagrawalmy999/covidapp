@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:background="#1C2F54">
 
 
     <TextView
@@ -30,12 +31,12 @@
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/name"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save" />
@@ -53,6 +54,8 @@
         android:hint="@string/enter_name"
         android:inputType="textNoSuggestions"
         android:padding="15dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:theme="@style/EditTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,12 +66,12 @@
     <TextView
         android:id="@+id/gender"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/gender"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_edit_text" />
@@ -86,6 +89,8 @@
         android:hint="@string/enter_gender"
         android:inputType="textNoSuggestions"
         android:padding="15dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:theme="@style/EditTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,12 +101,12 @@
     <TextView
         android:id="@+id/phone"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/phone_number"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender_edit_text" />
@@ -119,6 +124,8 @@
         android:hint="@string/enter_phone_number"
         android:inputType="number"
         android:padding="15dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:theme="@style/EditTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,12 +136,12 @@
     <TextView
         android:id="@+id/age"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/age"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_edit_text" />
@@ -152,6 +159,8 @@
         android:hint="@string/enter_age"
         android:inputType="number"
         android:padding="15dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:theme="@style/EditTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,12 +171,13 @@
     <TextView
         android:id="@+id/macAddress"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/mac_address"
         android:textColor="@color/text_parent_color"
-        android:textSize="15sp"
+        android:textColorHint="#ffffff"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age_edit_text" />
@@ -184,6 +194,8 @@
         android:gravity="start|top"
         android:hint="@string/enter_bluetooth_mac_address"
         android:padding="15dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:theme="@style/EditTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -191,26 +203,6 @@
         app:layout_constraintStart_toStartOf="@+id/gender"
         app:layout_constraintTop_toBottomOf="@+id/macAddress"
         tools:ignore="SpeakableTextPresentCheck,TextFields" />
-
-    <TextView
-        android:id="@+id/questionnaire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/edit_bg"
-        android:backgroundTint="@color/blue"
-        android:gravity="center"
-        android:paddingStart="10dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/health_assessment_questionnaire"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/mac_address_edit"
-        app:layout_constraintTop_toBottomOf="@+id/mac_address_edit" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

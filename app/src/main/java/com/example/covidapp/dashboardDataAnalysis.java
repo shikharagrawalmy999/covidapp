@@ -23,15 +23,24 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,13 +49,14 @@ public class dashboardDataAnalysis extends AppCompatActivity implements Location
 
     private static final String TAG = "dashboardDataAnalysis";
     int num=3; //change this to get more values on line chart
-
+    FirebaseAuth auth;
+    GoogleSignInClient mGoogleSignInClient;
 
     protected LocationManager locationManager;
     protected Context context;
     protected String latitude, longitude;
 
-    FirebaseAuth auth;
+
     FirebaseUser user;
     DatabaseReference reference;
     BluetoothAdapter bluetoothAdapter;
@@ -74,6 +84,7 @@ public class dashboardDataAnalysis extends AppCompatActivity implements Location
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_data_analyis);
 
+
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         enableDisableBT();
         enableDiscovery();
@@ -98,6 +109,7 @@ public class dashboardDataAnalysis extends AppCompatActivity implements Location
         reference= FirebaseDatabase.getInstance().getReference().child("users");
 
         bluetoothList = new ArrayList<String>();
+
 
 
 
@@ -135,7 +147,35 @@ public class dashboardDataAnalysis extends AppCompatActivity implements Location
                 startActivity(intent);
             }
         });
+        CardView card_view5 = (CardView) findViewById(R.id.card_view_logout); // creating a CardView and assigning a value.
+        card_view5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+                mGoogleSignInClient = GoogleSignIn.getClient(dashboardDataAnalysis.this, gso);
 
+                mGoogleSignInClient.signOut()
+                        .addOnCompleteListener(dashboardDataAnalysis.this, task ->{
+                            Toast.makeText(dashboardDataAnalysis.this, "Log out successfully...", Toast.LENGTH_SHORT).show();
+                        } );
+                auth.signOut();
+                startActivity(new Intent(dashboardDataAnalysis.this , MainActivity.class));
+                finish();
+            }
+        });
+
+        CardView card_view6 = (CardView) findViewById(R.id.card_view_questionnaire); // creating a CardView and assigning a value.
+        card_view6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(dashboardDataAnalysis.this, questionnaire.class);
+
+                startActivity(intent);
+            }
+        });
 
         startThread();
     }

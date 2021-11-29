@@ -37,15 +37,12 @@ public class ProfileActivity extends AppCompatActivity {
         gender_edit=findViewById(R.id.gender_edit_text);
         phone_number_edit=findViewById(R.id.phone_edit_text);
         age_edit=findViewById(R.id.age_edit_text);
-        questionnaire=findViewById(R.id.questionnaire);
+
         mac_address_edit = findViewById(R.id.mac_address_edit);
 
         save=findViewById(R.id.save);
 
-        questionnaire.setOnClickListener(v->{
-            Intent info_dashboard=new Intent(ProfileActivity.this, questionnaire.class);
-            startActivity(info_dashboard);
-        });
+
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -95,8 +92,8 @@ public class ProfileActivity extends AppCompatActivity {
                             reference.child(user.getUid()).child("phone_number").setValue(phone_number_edit.getText().toString());
                             reference.child(user.getUid()).child("age").setValue(age_edit.getText().toString());
                             reference.child(user.getUid()).child("mac_address").setValue(mac_address_edit.getText().toString());
-                            Intent info_dashboard=new Intent(ProfileActivity.this, Info_dashboard.class);
-                            startActivity(info_dashboard);
+                            Intent intent=new Intent(ProfileActivity.this, dashboardDataAnalysis.class);
+                            startActivity(intent);
                             finish();
                             Toast.makeText(ProfileActivity.this, "Changes saved successfully.", Toast.LENGTH_SHORT).show();
                         }

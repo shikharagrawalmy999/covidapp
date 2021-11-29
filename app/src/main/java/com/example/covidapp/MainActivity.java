@@ -27,6 +27,8 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     Dialog google_dialog;
     GoogleSignInClient agooglesigninclient;
+    DatabaseReference userReference;
     private static final int RC_SIGN_IN = 101;
 
     @Override
@@ -100,9 +103,13 @@ public class MainActivity extends AppCompatActivity {
 
                         google_dialog.dismiss();
                         user = auth.getCurrentUser();
+                        userReference = FirebaseDatabase.getInstance().getReference().child("users");
+                        userReference.child(user.getUid()).child("alert").setValue("Safe");
 
                         assert user != null;
-                        gotoProfile();
+
+
+                        goToInstructions();
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Login failed.", Toast.LENGTH_SHORT).show();
@@ -111,8 +118,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoProfile(){
+
         Intent intent = new Intent(MainActivity.this, dashboardDataAnalysis.class);
-       // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goToInstructions()
+    {
+        Intent intent = new Intent(MainActivity.this, instructionsMACaddress.class);
         startActivity(intent);
         finish();
     }

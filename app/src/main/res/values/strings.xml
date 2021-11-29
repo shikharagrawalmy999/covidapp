@@ -67,4 +67,19 @@
     <string name="yes_2">Yes, and tested positive.</string>
     <string name="no">No</string>
     <string name="have_you_come_in_contact_with_any_covid_19">Have you came in contact with any person who tested positive for covid or been alerted about the same via our app?</string>
+    <string name="title_activity_instructions_macaddress">instructionsMACAddress</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="instructions">Instructions</string>
+    <string name="note_that_bluetooth_must_be_on_for_this_and_please_turn_on_bluetooth_in_your_device_if_not">Note that bluetooth must be on for this and please turn on bluetooth in your device if not.</string>
+    <string name="_4_scroll_down_and_the_bluetooth_address_will_be_shown_in_the_list">4) Scroll down and the “Bluetooth address” will be shown in the list.</string>
+    <string name="_3_scroll_down_to_the_bottom_and_tap_status">3) Scroll down to the bottom and tap “Status“.</string>
+    <string name="_2_scroll_down_to_the_bottom_and_tap_about_phone_about_device_or_about_tablet">2) Scroll down to the bottom and tap “About Phone“, “About device“, or “About tablet“.</string>
+    <string name="_1_from_the_home_screen_open_the_app_drawer_then_open_settings">1) From the Home screen, open the app drawer, then open “Settings“.</string>
 </resources>

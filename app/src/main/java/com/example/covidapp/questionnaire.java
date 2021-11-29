@@ -92,7 +92,13 @@ public class questionnaire extends AppCompatActivity {
     }
 
     public void Check() {
+        DatabaseReference statusRef = reference.child(user.getUid()).child("status_arr");
+        statusRef.push().setValue(""+healthRatio);
+
         reference.child(user.getUid()).child("status").setValue(""+healthRatio);
+
+
+
         QuestionOne response1 = new QuestionOne();
         QuestionThree response3 = new QuestionThree();
         QuestionTwo response2 = new QuestionTwo();
@@ -142,7 +148,7 @@ public class questionnaire extends AppCompatActivity {
         }
         for (int i=9;i<14;i++){
             if (checkboxes.get(i).isChecked()){
-                if (status>0) status =status+0.5;
+                if (status>0) status = status+0.5;
             }
         }
         if ((checkboxes.get(15).isChecked())&&(status>0)) status-=2;
